@@ -23,14 +23,22 @@ class MyApp extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
+      // cardTheme: const CardTheme(
+      //   elevation: 2,
+      //   color: Colors.white,
+      // ),
     );
+
     return MaterialApp.router(
         routerConfig: goRouter,
         debugShowCheckedModeBanner: false,
         restorationScopeId: 'app',
         onGenerateTitle: (BuildContext context) => 'Match',
         theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(secondary: Colors.white),
+          colorScheme: theme.colorScheme.copyWith(
+            secondary: Colors.white,
+            primary: Color(0xff0053BE),
+          ),
         ));
   }
 }
