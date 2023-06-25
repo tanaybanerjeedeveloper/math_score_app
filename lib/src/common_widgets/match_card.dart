@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:match_app/src/routing/app_router.dart';
 
 class MatchCard extends StatelessWidget {
   final date;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:match_app/src/common_widgets/match_card.dart';
+import 'package:match_app/src/routing/app_router.dart';
 import 'package:match_app/src/utils/fake_data.dart';
 
 class MatchListScreen extends StatelessWidget {
@@ -14,9 +16,15 @@ class MatchListScreen extends StatelessWidget {
           shrinkWrap: true,
           itemCount: matches.length,
           itemBuilder: (context, index) => Center(
-            child: MatchCard(
-              date: matches[index]['date'],
-              id: matches[index]['id'],
+            child: GestureDetector(
+              onTap: () =>
+                  context.pushNamed(AppRoute.tabbarScreen.name, queryParams: {
+                'id': matches[index]['id'],
+              }),
+              child: MatchCard(
+                date: matches[index]['date'],
+                id: matches[index]['id'],
+              ),
             ),
           ),
         ),
