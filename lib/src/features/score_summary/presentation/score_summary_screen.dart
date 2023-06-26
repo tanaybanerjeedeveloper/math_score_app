@@ -7,7 +7,16 @@ class ScoreSummaryScreen extends ConsumerWidget {
   final id;
   ScoreSummaryScreen({required this.id});
 
-  dynamic findTheBestPartnership(List list) {}
+  dynamic findTheBestPartnership(List list) {
+    var bestPartnership = list[0];
+
+    for (var i = 0; i < list.length; i++) {
+      if (list[i]['runs'] > bestPartnership['runs']) {
+        bestPartnership = list[i];
+      }
+    }
+    return bestPartnership;
+  }
 
   dynamic findTheWinner(List list) {
     var winner = list[0];
@@ -28,8 +37,11 @@ class ScoreSummaryScreen extends ConsumerWidget {
       data: (data) {
         print('data: $data');
         var winner = findTheWinner(data['response']['innings']);
+        print('partnership: ${winner['statistics']['partnership']}');
         print('winner:---- $winner');
-        //var partnership = findTheBestPartnership(data['response']['innings'][1]);
+        var bestPartnership =
+            findTheBestPartnership(winner['statistics']['partnership']);
+        print('bestPartnership: $bestPartnership');
         return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: SingleChildScrollView(
@@ -49,65 +61,25 @@ class ScoreSummaryScreen extends ConsumerWidget {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: DataTable(
-                            columns: [
-                              DataColumn(label: Text('Batsmen')),
-                              DataColumn(label: Text('R')),
-                              DataColumn(label: Text('B')),
-                              DataColumn(label: Text('4s')),
-                              DataColumn(label: Text('6s')),
-                              DataColumn(label: Text('Sr')),
-                            ],
-                            rows: [
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                            ],
-                          ),
+                              columns: [
+                                DataColumn(label: Text('Batsmen id')),
+                                DataColumn(label: Text('R')),
+                                DataColumn(label: Text('B')),
+                                DataColumn(label: Text('4s')),
+                                DataColumn(label: Text('6s')),
+                                DataColumn(label: Text('Sr')),
+                              ],
+                              rows: bestPartnership['batsmen']
+                                  .map<DataRow>((item) => DataRow(cells: [
+                                        DataCell(Text('${item['batsman_id']}')),
+                                        DataCell(Text('${item['runs']}')),
+                                        DataCell(
+                                            Text('${item['balls_faced']}')),
+                                        DataCell(Text('${item['fours']}')),
+                                        DataCell(Text('${item['sixes']}')),
+                                        DataCell(Text('00')),
+                                      ]))
+                                  .toList()),
                         ),
                       ),
                     ),
