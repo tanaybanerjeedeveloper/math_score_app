@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w400,
+          //fontSize: 10,
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',

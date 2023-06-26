@@ -18,6 +18,16 @@ class ScoreSummaryScreen extends ConsumerWidget {
     return bestPartnership;
   }
 
+  findTheBestPlayer(Map bestPartnership) {
+    var bestPlayer = bestPartnership['batsmen'][0];
+    for (var i = 0; i < bestPartnership['batsmen'].length; i++) {
+      if (bestPartnership['batsmen'][i]['runs'] > bestPlayer['runs']) {
+        bestPlayer = bestPartnership['batsmen'][i];
+      }
+    }
+    return bestPlayer;
+  }
+
   dynamic findTheWinner(List list) {
     var winner = list[0];
     for (var i = 0; i < list.length; i++) {
@@ -42,6 +52,8 @@ class ScoreSummaryScreen extends ConsumerWidget {
         var bestPartnership =
             findTheBestPartnership(winner['statistics']['partnership']);
         print('bestPartnership: $bestPartnership');
+        var bestPlayer = findTheBestPlayer(bestPartnership);
+        print('bestPlayer:--------$bestPlayer');
         return Scaffold(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: SingleChildScrollView(
@@ -105,52 +117,20 @@ class ScoreSummaryScreen extends ConsumerWidget {
                             ],
                             rows: [
                               DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
+                                DataCell(Text('Mitchell')),
+                                DataCell(Text('5')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
                               ]),
                               DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                              ]),
-                              DataRow(cells: [
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
-                                DataCell(Text('data')),
+                                DataCell(Text('Blair')),
+                                DataCell(Text('5')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
+                                DataCell(Text('00')),
                               ]),
                             ],
                           ),
@@ -188,14 +168,14 @@ class ScoreSummaryScreen extends ConsumerWidget {
                                   height: mediaQuery.height * 0.015,
                                 ),
                                 Text(
-                                  'Rohit Sharma',
+                                  '${bestPlayer['batsman_id']}',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                                 SizedBox(
                                   height: mediaQuery.height * 0.015,
                                 ),
                                 Text(
-                                  '112R (30b)',
+                                  '${bestPlayer['runs']}R (${bestPlayer['balls_faced']}b)',
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
