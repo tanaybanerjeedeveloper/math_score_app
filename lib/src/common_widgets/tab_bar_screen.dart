@@ -410,7 +410,7 @@ class TabbarScreen extends StatelessWidget {
             Expanded(
                 child: TabBarView(
               children: [
-                ScoreSummaryScreen(),
+                ScoreSummaryScreen(id: id),
                 ScoreCardScreen(),
               ],
             ))

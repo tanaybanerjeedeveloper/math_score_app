@@ -35,30 +35,30 @@ final goRouter = GoRouter(
             );
           },
         ),
-        GoRoute(
-          path: 'match/scorecard',
-          name: AppRoute.scoreCard.name,
-          pageBuilder: (context, state) {
-            final matchID = state.params['matchid']!;
-            return MaterialPage(
-              key: state.pageKey,
-              fullscreenDialog: true,
-              child: const ScoreCardScreen(),
-            );
-          },
-        ),
-        GoRoute(
-          path: 'match/scoresummary',
-          name: AppRoute.scoreSummary.name,
-          pageBuilder: (context, state) {
-            final matchID = state.params['matchid']!;
-            return MaterialPage(
-              key: state.pageKey,
-              fullscreenDialog: true,
-              child: const ScoreSummaryScreen(),
-            );
-          },
-        ),
+        // GoRoute(
+        //   path: 'match/scorecard',
+        //   name: AppRoute.scoreCard.name,
+        //   pageBuilder: (context, state) {
+        //     final matchID = state.params['matchid']!;
+        //     return MaterialPage(
+        //       key: state.pageKey,
+        //       fullscreenDialog: true,
+        //       child: const ScoreCardScreen(),
+        //     );
+        //   },
+        // ),
+        // GoRoute(
+        //   path: 'match/scoresummary',
+        //   name: AppRoute.scoreSummary.name,
+        //   pageBuilder: (context, state) {
+        //     final matchID = state.params['matchid']!;
+        //     return MaterialPage(
+        //       key: state.pageKey,
+        //       fullscreenDialog: true,
+        //       child: const ScoreSummaryScreen(),
+        //     );
+        //   },
+        // ),
       ],
     )
   ],
