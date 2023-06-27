@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:match_app/src/common_widgets/error_msg_widget.dart';
 import 'package:match_app/src/features/score_card/score_card_screen.dart';
 import 'package:match_app/src/features/score_summary/data/score_summary_repository.dart';
@@ -52,8 +53,27 @@ class TabbarScreen extends ConsumerWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: mediaQuery.height * 0.075,
+                        height: mediaQuery.height * 0.045,
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 8.0, left: 8.0, right: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              onPressed: () => context.pop(),
+                              icon: Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      // SizedBox(
+                      //   height: mediaQuery.height * 0.022,
+                      // ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -446,7 +466,7 @@ class TabbarScreen extends ConsumerWidget {
                         bottomLeft: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
                       )),
-                  height: mediaQuery.height * 0.35,
+                  height: mediaQuery.height * 0.41,
                   padding: EdgeInsets.symmetric(
                       horizontal: mediaQuery.width * 0.008),
                 ),
@@ -474,7 +494,7 @@ class TabbarScreen extends ConsumerWidget {
                     child: TabBarView(
                   children: [
                     ScoreSummaryScreen(id: id),
-                    ScoreCardScreen(),
+                    ScoreCardScreen(id: id),
                   ],
                 ))
               ],
