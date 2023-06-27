@@ -466,7 +466,7 @@ class TabbarScreen extends ConsumerWidget {
                         bottomLeft: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
                       )),
-                  height: mediaQuery.height * 0.41,
+                  height: mediaQuery.height * 0.37,
                   padding: EdgeInsets.symmetric(
                       horizontal: mediaQuery.width * 0.008),
                 ),
