@@ -183,8 +183,9 @@ class TabbarScreen extends ConsumerWidget {
                                         height: mediaQuery.height * 0.01,
                                       ),
                                       SizedBox(
-                                        width: mediaQuery.width * 0.1,
+                                        width: mediaQuery.width * 0.05,
                                         child: FittedBox(
+                                          fit: BoxFit.scaleDown,
                                           child: Text(
                                             '${runsIND}',
                                             style: Theme.of(context)
@@ -235,8 +236,9 @@ class TabbarScreen extends ConsumerWidget {
                                         height: mediaQuery.height * 0.01,
                                       ),
                                       SizedBox(
-                                        width: mediaQuery.width * 0.1,
+                                        width: mediaQuery.width * 0.05,
                                         child: FittedBox(
+                                          fit: BoxFit.scaleDown,
                                           child: Text(
                                             '${runs[0]}',
                                             style: Theme.of(context)
@@ -268,8 +270,11 @@ class TabbarScreen extends ConsumerWidget {
                       SizedBox(
                         height: mediaQuery.height * 0.010,
                       ),
-                      Divider(
-                        color: Color(0xffE4E5E7),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Divider(
+                          color: Color(0xffE4E5E7),
+                        ),
                       ),
                       SizedBox(
                         height: mediaQuery.height * 0.010,
@@ -466,7 +471,7 @@ class TabbarScreen extends ConsumerWidget {
                         bottomLeft: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
                       )),
-                  height: mediaQuery.height * 0.37,
+                  height: mediaQuery.height * 0.40,
                   padding: EdgeInsets.symmetric(
                       horizontal: mediaQuery.width * 0.008),
                 ),
